@@ -18,9 +18,6 @@ describe("isEqualTo", () => {
 describe("toString", () => {
   it("should stringify the Line Object", () => {
     const line = new Line(5, 10, 10, 10);
-    assert.strictEqual(
-      line.toString(),
-      "Line {point1X: 5, point1Y: 10, point2X: 10, point2Y: 10}"
-    );
+    assert.strictEqual(line.toString(), "Line (5,10)----------(10,10)");
   });
 });

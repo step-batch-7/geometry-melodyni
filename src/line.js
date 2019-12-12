@@ -14,9 +14,7 @@ class Line {
     return x1 && y1 && x2 && y2;
   }
   toString() {
-    return this.toString();
+    return `Line (${this.point1X},${this.point1Y})----------(${this.point2X},${this.point2Y})`;
   }
 }
-line = new Line(1, 1, 1, 10);
-console.log(line.toString());
 module.exports = Line;
