@@ -1,4 +1,8 @@
 "use strict";
+const areCoordinatesEqual = function(endOfLineA, endOfLineB) {
+  return endOfLineA.x == endOfLineB.x && endOfLineA.y == endOfLineB.y;
+};
+
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
@@ -6,13 +10,12 @@ class Line {
   }
 
   isEqualTo(otherLine) {
-    const typeCheck = otherLine instanceof Line;
-    const pointA =
-      this.endA.x == otherLine.endA.x && this.endA.y == otherLine.endA.y;
-    const pointB =
-      this.endB.x == otherLine.endB.x && this.endB.y == otherLine.endB.y;
-    return typeCheck && pointA && pointB;
+    const isTypeEqual = otherLine instanceof Line;
+    const areEndAOfLinesEqual = areCoordinatesEqual(this.endA, otherLine.endA);
+    const areEndBOfLinesEqual = areCoordinatesEqual(this.endB, otherLine.endB);
+    return isTypeEqual && areEndAOfLinesEqual && areEndBOfLinesEqual;
   }
+
   toString() {
     return `Line (${this.endA.x},${this.endA.y})----------(${this.endB.x},${this.endB.y})`;
   }

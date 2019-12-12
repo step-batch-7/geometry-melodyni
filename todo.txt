@@ -3,6 +3,6 @@
 ---done--- update constructor
 ---done--- change data structure
 ---done--- modify variable names
-* modify isEqualTo
+---done--- modify isEqualTo
 * extract logic into smaller functions
 * read code & refactor
