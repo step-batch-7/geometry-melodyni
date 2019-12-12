@@ -6,12 +6,12 @@ class Line {
   }
 
   isEqualTo(otherLine) {
-    const i = otherLine instanceof Line;
+    const typeCheck = otherLine instanceof Line;
     const pointA =
       this.endA.x == otherLine.endA.x && this.endA.y == otherLine.endA.y;
     const pointB =
       this.endB.x == otherLine.endB.x && this.endB.y == otherLine.endB.y;
-    return i && pointA && pointB;
+    return typeCheck && pointA && pointB;
   }
   toString() {
     return `Line (${this.endA.x},${this.endA.y})----------(${this.endB.x},${this.endB.y})`;

@@ -2,7 +2,7 @@
 ---done--- write test for toString method of class Line;
 ---done--- update constructor
 ---done--- change data structure
+---done--- modify variable names
 * modify isEqualTo
-* modify variable names
 * extract logic into smaller functions
 * read code & refactor
