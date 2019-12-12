@@ -1,6 +1,8 @@
 ---done--- write test for isEqualTo method of class Line;
-* write test for toString method of class Line;
+---done--- write test for toString method of class Line;
+---done--- update constructor
+---done--- change data structure
 * modify isEqualTo
 * modify variable names
-* change data structures
 * extract logic into smaller functions
+* read code & refactor
