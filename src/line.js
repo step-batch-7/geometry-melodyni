@@ -13,6 +13,10 @@ class Line {
     const y2 = this.point2Y == otherLine.point2Y;
     return x1 && y1 && x2 && y2;
   }
+  toString() {
+    return this.toString();
+  }
 }
-console.log("line");
+line = new Line(1, 1, 1, 10);
+console.log(line.toString());
 module.exports = Line;
