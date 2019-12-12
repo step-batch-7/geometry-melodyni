@@ -3,3 +3,4 @@
 * modify isEqualTo
 * modify variable names
 * change data structures
+* extract logic into smaller functions
