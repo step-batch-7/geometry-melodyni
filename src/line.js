@@ -5,9 +5,7 @@ class Line {
     this.point2X = point2X;
     this.point2Y = point2Y;
   }
-  // toString() {
-  //   return this.toString();
-  // }
+
   isEqualTo(otherLine) {
     const x1 = this.point1X == otherLine.point1X;
     const y1 = this.point1Y == otherLine.point1Y;
