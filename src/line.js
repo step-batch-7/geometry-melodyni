@@ -18,6 +18,4 @@ class Line {
   }
 }
 
-console.log(line.toString());
-
 module.exports = Line;
