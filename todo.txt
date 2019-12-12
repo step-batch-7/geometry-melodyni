@@ -4,5 +4,5 @@
 ---done--- change data structure
 ---done--- modify variable names
 ---done--- modify isEqualTo
-* extract logic into smaller functions
+* extract logic into smaller functions 
 * read code & refactor

@@ -11,9 +11,10 @@ class Line {
 
   isEqualTo(otherLine) {
     const isTypeEqual = otherLine instanceof Line;
-    const areEndAOfLinesEqual = areCoordinatesEqual(this.endA, otherLine.endA);
-    const areEndBOfLinesEqual = areCoordinatesEqual(this.endB, otherLine.endB);
-    return isTypeEqual && areEndAOfLinesEqual && areEndBOfLinesEqual;
+    const areEndsEqual =
+      areCoordinatesEqual(this.endA, otherLine.endA) &&
+      areCoordinatesEqual(this.endB, otherLine.endB);
+    return isTypeEqual && areEndsEqual;
   }
 
   toString() {
