@@ -1,0 +1,3 @@
+---done--- write test for isEqualTo method of class Line;
+* write test for toString method of class Line;
+* 
