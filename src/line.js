@@ -11,10 +11,11 @@ class Line {
 
   isEqualTo(otherLine) {
     const isTypeEqual = otherLine instanceof Line;
-    const areLinesEqual =
+    return (
+      isTypeEqual &&
       areEndsEqual(this.endA, otherLine.endA) &&
-      areEndsEqual(this.endB, otherLine.endB);
-    return isTypeEqual && areLinesEqual;
+      areEndsEqual(this.endB, otherLine.endB)
+    );
   }
 
   toString() {
