@@ -10,8 +10,8 @@ class Line {
   }
 
   isEqualTo(other) {
+    if (!(other instanceof Line)) return false;
     return (
-      other instanceof Line &&
       arePointsEqual(this.endA, other.endA) &&
       arePointsEqual(this.endB, other.endB)
     );
