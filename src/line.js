@@ -1,6 +1,6 @@
 "use strict";
-const areCoordinatesEqual = function(endOfLineA, endOfLineB) {
-  return endOfLineA.x == endOfLineB.x && endOfLineA.y == endOfLineB.y;
+const areCoordinatesEqual = function(coordinatesA, coordinatesB) {
+  return coordinatesA.x == coordinatesB.x && coordinatesA.y == coordinatesB.y;
 };
 
 class Line {
