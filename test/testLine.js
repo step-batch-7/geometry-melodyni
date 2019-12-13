@@ -41,5 +41,10 @@ describe("Line", () => {
       const line = new Line({ x: 5, y: 10 }, { x: 10, y: 10 });
       assert.strictEqual(line.length, 5);
     });
+
+    it("should give length of the line for given negative integer points ", () => {
+      const line = new Line({ x: -5, y: 10 }, { x: 10, y: 10 });
+      assert.strictEqual(line.length, 15);
+    });
   });
 });
