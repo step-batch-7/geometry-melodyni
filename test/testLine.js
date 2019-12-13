@@ -36,4 +36,10 @@ describe("Line", () => {
       assert.strictEqual(line.toString(), "Line (5,10)-----(10,10)");
     });
   });
+  describe("length", () => {
+    it("should give length of the line for given positive integer points ", () => {
+      const line = new Line({ x: 5, y: 10 }, { x: 10, y: 10 });
+      assert.strictEqual(line.length, 5);
+    });
+  });
 });

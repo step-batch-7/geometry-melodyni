@@ -20,6 +20,13 @@ class Line {
   toString() {
     return `Line (${this.endA.x},${this.endA.y})-----(${this.endB.x},${this.endB.y})`;
   }
+
+  get length() {
+    return Math.sqrt(
+      Math.pow(this.endB.x - this.endA.x, 2) +
+        Math.pow(this.endB.y - this.endA.y, 2)
+    );
+  }
 }
 
 module.exports = Line;
