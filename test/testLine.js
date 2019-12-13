@@ -97,5 +97,11 @@ describe("Line", () => {
       const lineB = new Line({ x: 0, y: 1 }, { x: 2, y: 10 });
       assert.isFalse(lineA.isParallelTo(lineB));
     });
+
+    it("should give true for coincident lines", () => {
+      const lineA = new Line({ x: 0, y: 1 }, { x: 10, y: 10 });
+      const lineB = new Line({ x: 0, y: 1 }, { x: 10, y: 10 });
+      assert.isTrue(lineA.isParallelTo(lineB));
+    });
   });
 });
