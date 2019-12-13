@@ -37,24 +37,31 @@ describe("Line", () => {
     });
   });
   describe("length", () => {
-    it("should give length of the line for given positive integer points ", () => {
+    it("should calculate length of the line for given positive integer points ", () => {
       const line = new Line({ x: 5, y: 10 }, { x: 10, y: 10 });
       assert.strictEqual(line.length, 5);
     });
 
-    it("should give length of the line for given negative integer points ", () => {
+    it("should calculate length of the line for given negative integer points ", () => {
       const line = new Line({ x: -5, y: 10 }, { x: 10, y: 10 });
       assert.strictEqual(line.length, 15);
     });
 
-    it("should give length of the line having floating points", () => {
+    it("should calculate length of the line having floating points", () => {
       const line = new Line({ x: 2.3, y: 10 }, { x: 10.9, y: 10 });
       assert.approximately(line.length, 8, 1);
     });
 
-    it("should give length 0 of the line having same points", () => {
+    it("should calculate length 0 of the line having same points", () => {
       const line = new Line({ x: 10, y: 10 }, { x: 10, y: 10 });
       assert.strictEqual(line.length, 0);
+    });
+  });
+
+  describe("slope", () => {
+    it("should calculate slope of a line for positive integer points", () => {
+      const line = new Line({ x: 1, y: 0 }, { x: 3, y: 12 });
+      assert.strictEqual(line.slope, 6);
     });
   });
 });
