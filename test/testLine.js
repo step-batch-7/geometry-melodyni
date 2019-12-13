@@ -13,6 +13,11 @@ describe("isEqualTo", () => {
     const lineB = new Line({ x: 1, y: 1 }, { x: 10, y: 10 });
     assert.strictEqual(lineA.isEqualTo(lineB), false);
   });
+  it("should return false if line is compared with other type ", () => {
+    const lineA = new Line({ x: 1, y: 1 }, { x: 1, y: 10 });
+    const anotherObj = { endA: { x: 1, y: 1 }, endB: { x: 1, y: 10 } };
+    assert.strictEqual(lineA.isEqualTo(anotherObj), false);
+  });
 });
 
 describe("toString", () => {
