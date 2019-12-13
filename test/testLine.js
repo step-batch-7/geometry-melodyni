@@ -8,25 +8,25 @@ describe("Line", () => {
     it("should give true if two lines are equal", () => {
       const lineA = new Line({ x: 1, y: 1 }, { x: 1, y: 10 });
       const lineB = new Line({ x: 1, y: 1 }, { x: 1, y: 10 });
-      assert.isOk(lineA.isEqualTo(lineB));
+      assert.isTrue(lineA.isEqualTo(lineB));
     });
 
     it("should give false if two lines are not equal", () => {
       const lineA = new Line({ x: 1, y: 1 }, { x: 1, y: 10 });
       const lineB = new Line({ x: 1, y: 1 }, { x: 10, y: 10 });
-      assert.notOk(lineA.isEqualTo(lineB));
+      assert.isFalse(lineA.isEqualTo(lineB));
     });
 
     it("should give false if line is compared with other type ", () => {
       const lineA = new Line({ x: 1, y: 1 }, { x: 1, y: 10 });
       const other = { endA: { x: 1, y: 1 }, endB: { x: 1, y: 10 } };
-      assert.notOk(lineA.isEqualTo(other));
+      assert.isFalse(lineA.isEqualTo(other));
     });
 
     it("should give false if line is compared with other type which doesn't have x, y fields ", () => {
       const lineA = new Line({ x: 1, y: 1 }, { x: 1, y: 10 });
       const other = "";
-      assert.notOk(lineA.isEqualTo(other));
+      assert.isFalse(lineA.isEqualTo(other));
     });
   });
 
@@ -89,7 +89,13 @@ describe("Line", () => {
     it("should give true if lines are parallel", () => {
       const lineA = new Line({ x: 0, y: 0 }, { x: 0, y: 10 });
       const lineB = new Line({ x: 10, y: 0 }, { x: 10, y: 10 });
-      assert.strictEqual(lineA.isParallelTo(lineB), true);
+      assert.isTrue(lineA.isParallelTo(lineB));
+    });
+
+    it("should give false if lines are not parallel", () => {
+      const lineA = new Line({ x: 0, y: 1 }, { x: 10, y: 10 });
+      const lineB = new Line({ x: 0, y: 1 }, { x: 2, y: 10 });
+      assert.isFalse(lineA.isParallelTo(lineB));
     });
   });
 });
