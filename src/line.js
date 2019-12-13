@@ -1,6 +1,6 @@
 "use strict";
-const areEndsEqual = function(endA, endB) {
-  return endA.x == endB.x && endA.y == endB.y;
+const arePointsEqual = function(pointA, pointB) {
+  return pointA.x == pointB.x && pointA.y == pointB.y;
 };
 
 class Line {
@@ -9,12 +9,11 @@ class Line {
     this.endB = { x: endB.x, y: endB.y };
   }
 
-  isEqualTo(otherLine) {
-    const isTypeEqual = otherLine instanceof Line;
+  isEqualTo(other) {
     return (
-      isTypeEqual &&
-      areEndsEqual(this.endA, otherLine.endA) &&
-      areEndsEqual(this.endB, otherLine.endB)
+      other instanceof Line &&
+      arePointsEqual(this.endA, other.endA) &&
+      arePointsEqual(this.endB, other.endB)
     );
   }
 
