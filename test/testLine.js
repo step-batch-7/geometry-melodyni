@@ -63,5 +63,9 @@ describe("Line", () => {
       const line = new Line({ x: 1, y: 0 }, { x: 3, y: 12 });
       assert.strictEqual(line.slope, 6);
     });
+    it("should calculate slope of a line for positive floating points", () => {
+      const line = new Line({ x: 1, y: 2.5 }, { x: 3, y: 12.5 });
+      assert.approximately(line.slope, 5, 1);
+    });
   });
 });
