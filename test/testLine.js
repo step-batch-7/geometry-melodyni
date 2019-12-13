@@ -78,5 +78,10 @@ describe("Line", () => {
       const line = new Line({ x: 10, y: 2 }, { x: 10, y: 10 });
       assert.strictEqual(line.slope, Infinity);
     });
+
+    it("should give slope -Infinity for equal abscissa", () => {
+      const line = new Line({ x: 10, y: 12 }, { x: 10, y: 2 });
+      assert.strictEqual(line.slope, -Infinity);
+    });
   });
 });
