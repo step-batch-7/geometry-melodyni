@@ -46,5 +46,10 @@ describe("Line", () => {
       const line = new Line({ x: -5, y: 10 }, { x: 10, y: 10 });
       assert.strictEqual(line.length, 15);
     });
+
+    it("should give length 0 of the line having same points", () => {
+      const line = new Line({ x: 10, y: 10 }, { x: 10, y: 10 });
+      assert.strictEqual(line.length, 0);
+    });
   });
 });
