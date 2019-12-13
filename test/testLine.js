@@ -47,6 +47,11 @@ describe("Line", () => {
       assert.strictEqual(line.length, 15);
     });
 
+    it("should give length of the line having floating points", () => {
+      const line = new Line({ x: 2.3, y: 10 }, { x: 10.9, y: 10 });
+      assert.approximately(line.length, 8, 1);
+    });
+
     it("should give length 0 of the line having same points", () => {
       const line = new Line({ x: 10, y: 10 }, { x: 10, y: 10 });
       assert.strictEqual(line.length, 0);
