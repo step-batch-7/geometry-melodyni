@@ -104,7 +104,7 @@ describe("Line", () => {
       assert.isTrue(lineA.isParallelTo(lineB));
     });
 
-    it("should give true for coincident lines", () => {
+    it("should give false for the other type having equal slope feild", () => {
       const lineA = new Line({ x: 0, y: 2 }, { x: 10, y: 12 });
       const other = { slope: 1 };
       assert.isFalse(lineA.isParallelTo(other));
