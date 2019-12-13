@@ -17,8 +17,9 @@ class Line {
     );
   }
 
-  isParallelTo(other) {
-    return this.slope === other.slope;
+  isParallelTo(otherLine) {
+    if (!(otherLine instanceof Line)) return false;
+    return this.slope === otherLine.slope;
   }
 
   toString() {
