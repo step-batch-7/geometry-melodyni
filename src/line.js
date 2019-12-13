@@ -1,6 +1,6 @@
 "use strict";
 const arePointsEqual = function(pointA, pointB) {
-  return pointA.x == pointB.x && pointA.y == pointB.y;
+  return pointA.x === pointB.x && pointA.y === pointB.y;
 };
 
 class Line {
@@ -15,6 +15,10 @@ class Line {
       arePointsEqual(this.endA, other.endA) &&
       arePointsEqual(this.endB, other.endB)
     );
+  }
+
+  isParallelTo(other) {
+    return this.slope === other.slope;
   }
 
   toString() {

@@ -52,7 +52,7 @@ describe("Line", () => {
       assert.approximately(line.length, 8, 1);
     });
 
-    it("should calculate length 0 of the line having same points", () => {
+    it("should give 0 for point which is not a line", () => {
       const line = new Line({ x: 10, y: 10 }, { x: 10, y: 10 });
       assert.strictEqual(line.length, 0);
     });
@@ -82,6 +82,14 @@ describe("Line", () => {
     it("should give slope -Infinity for equal abscissa", () => {
       const line = new Line({ x: 10, y: 12 }, { x: 10, y: 2 });
       assert.strictEqual(line.slope, -Infinity);
+    });
+  });
+
+  describe("isParallelTo", () => {
+    it("should give true if lines are parallel", () => {
+      const lineA = new Line({ x: 0, y: 0 }, { x: 0, y: 10 });
+      const lineB = new Line({ x: 10, y: 0 }, { x: 10, y: 10 });
+      assert.strictEqual(lineA.isParallelTo(lineB), true);
     });
   });
 });
