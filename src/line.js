@@ -23,11 +23,11 @@ class Line {
   }
 
   findX(ordinate) {
-    return this.slope * (ordinate - this.endA.y) + this.endA.x;
+    return (ordinate - this.endA.y) / this.slope + this.endA.x;
   }
 
   findY(abscissa) {
-    return this.slope * (abscissa - this.endA.x) + this.endA.y;
+    return (abscissa - this.endA.x) * this.slope + this.endA.y;
   }
 
   toString() {
