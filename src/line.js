@@ -26,6 +26,10 @@ class Line {
     return this.slope * (ordinate - this.endA.y) + this.endA.x;
   }
 
+  findY(abscissa) {
+    return this.slope * (abscissa - this.endA.x) + this.endA.y;
+  }
+
   toString() {
     return `Line (${this.endA.x},${this.endA.y})-----(${this.endB.x},${this.endB.y})`;
   }
