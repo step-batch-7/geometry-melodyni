@@ -33,4 +33,11 @@ describe("point", () => {
       assert.isNotTrue(pointA.isEqualTo(pointB));
     });
   });
+  describe("clone", () => {
+    it("should give exact same pointB for a given pointA", () => {
+      const pointA = new Point(4, 5);
+      const pointB = pointA.clone(4, 5);
+      assert.deepStrictEqual(pointA, pointB);
+    });
+  });
 });

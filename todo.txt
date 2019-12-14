@@ -4,8 +4,8 @@ p.visit((x,y)=>x*y) // gives 6
 p.visit((x,y)=>x+y) // gives 5  
 a.split() // gives 2 lines split exactly at the centre of line a
 p.clone() // gives a copy of point p
-p1.isEqualTo(p2) //is true if points p1 and p2 are on same x,y coordinates
 
+---done--- p1.isEqualTo(p2) //is true if points p1 and p2 are on same x,y coordinates
 ---done--- a.isEqualTo(b) //is true if line a and line b have same end points
 ---done--- a.toString() // "[Line (1,2) to (2,3)]"
 ---done--- p.toString(); // "[Point @(2,3)]"
