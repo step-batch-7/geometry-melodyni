@@ -1,3 +1,17 @@
+a.isParallelTo(b);//is true if line a is parallel to line b
+//findX & findY give NaN when outside the Line Segment
+p.visit((x,y)=>x*y) // gives 6
+p.visit((x,y)=>x+y) // gives 5  
+a.split() // gives 2 lines split exactly at the centre of line a
+p.clone() // gives a copy of point p
+p1.isEqualTo(p2) //is true if points p1 and p2 are on same x,y coordinates
+
+---done--- a.isEqualTo(b) //is true if line a and line b have same end points
+---done--- a.toString() // "[Line (1,2) to (2,3)]"
+---done--- p.toString(); // "[Point @(2,3)]"
+---done--- p = new Point(2,3)// creates a point at 2,3
+---done--- y = a.findY(4); //finds y for a given x on the line
+---done--- x = a.findX(8) //finds x for a given y on the line
 ---done--- write test for isEqualTo method of class Line;
 ---done--- write test for toString method of class Line;
 ---done--- update constructor
