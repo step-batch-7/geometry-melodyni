@@ -130,5 +130,19 @@ describe("Line", () => {
       const expected = [lineA, lineB];
       assert.deepStrictEqual(line.split(), expected);
     });
+    it("should split given line into two equal parts and handle negative integer value", () => {
+      const line = new Line({ x: 2, y: -4 }, { x: 6, y: 4 });
+      const lineA = new Line({ x: 2, y: -4 }, { x: 4, y: 0 });
+      const lineB = new Line({ x: 4, y: 0 }, { x: 6, y: 4 });
+      const expected = [lineA, lineB];
+      assert.deepStrictEqual(line.split(), expected);
+    });
+    it("should split given line into two equal parts and handle floating value", () => {
+      const line = new Line({ x: 2, y: 4.5 }, { x: 6.8, y: 4 });
+      const lineA = new Line({ x: 2, y: 4.5 }, { x: 4.4, y: 4.25 });
+      const lineB = new Line({ x: 4.4, y: 4.25 }, { x: 6.8, y: 4 });
+      const expected = [lineA, lineB];
+      assert.deepStrictEqual(line.split(), expected);
+    });
   });
 });
