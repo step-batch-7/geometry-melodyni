@@ -1,7 +1,8 @@
+a.hasPoint(p) // is true if point p is on the line a
 a.isParallelTo(b);//is true if line a is parallel to line b
-a.split() // gives 2 lines split exactly at the centre of line a
 //findX & findY give NaN when outside the Line Segment
 
+---done--- a.split() // gives 2 lines split exactly at the centre of line a
 ---done--- p.visit((x,y)=>x+y) // gives 5  
 ---done--- p.visit((x,y)=>x*y) // gives 6
 ---done--- p.clone() // gives a copy of point p

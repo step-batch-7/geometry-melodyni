@@ -5,6 +5,20 @@ const arePointsEqual = function(pointA, pointB) {
   return pointA.x === pointB.x && pointA.y === pointB.y;
 };
 
+const isAbscissaInRange = function(abscissa, endAX, endBX) {
+  return (
+    (endAX >= abscissa && abscissa >= endBX) ||
+    (endBX >= abscissa && abscissa >= endAX)
+  );
+};
+
+const isOrdinateInRange = function(ordinate, endAY, endBY) {
+  return (
+    (endAY >= ordinate && ordinate >= endBY) ||
+    (endBY >= ordinate && ordinate >= endAY)
+  );
+};
+
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
@@ -16,6 +30,14 @@ class Line {
     return (
       arePointsEqual(this.endA, other.endA) &&
       arePointsEqual(this.endB, other.endB)
+    );
+  }
+
+  hasPoint(other) {
+    if (!(other instanceof Point)) return false;
+    return (
+      isAbscissaInRange(other.x, this.endA.x, this.endB.x) &&
+      isOrdinateInRange(other.y, this.endA.y, this.endB.y)
     );
   }
 
@@ -32,10 +54,6 @@ class Line {
     return (abscissa - this.endA.x) * this.slope + this.endA.y;
   }
 
-  toString() {
-    return `[Line (${this.endA.x},${this.endA.y}) to (${this.endB.x},${this.endB.y})]`;
-  }
-
   split() {
     const midAbscissa = (this.endA.x + this.endB.x) / 2;
     const midOrdinate = (this.endA.y + this.endB.y) / 2;
@@ -43,6 +61,10 @@ class Line {
     const lineA = new Line(this.endA, midPoint);
     const lineB = new Line(midPoint, this.endB);
     return [lineA, lineB];
+  }
+
+  toString() {
+    return `[Line (${this.endA.x},${this.endA.y}) to (${this.endB.x},${this.endB.y})]`;
   }
 
   get length() {

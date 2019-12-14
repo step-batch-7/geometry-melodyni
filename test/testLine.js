@@ -2,6 +2,7 @@
 const chai = require("chai");
 const assert = chai.assert;
 const Line = require("../src/line");
+const Point = require("../src/point");
 
 describe("Line", () => {
   describe("isEqualTo", () => {
@@ -143,6 +144,13 @@ describe("Line", () => {
       const lineB = new Line({ x: 4.4, y: 4.25 }, { x: 6.8, y: 4 });
       const expected = [lineA, lineB];
       assert.deepStrictEqual(line.split(), expected);
+    });
+  });
+  describe("hasPoint", () => {
+    it("should give true if given point is on the given line", () => {
+      const line = new Line({ x: 2, y: 4 }, { x: 4, y: 4 });
+      const point = new Point(3, 4);
+      assert.isTrue(line.hasPoint(point));
     });
   });
 });
