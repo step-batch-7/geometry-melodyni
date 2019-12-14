@@ -17,9 +17,13 @@ class Line {
     );
   }
 
-  isParallelTo(otherLine) {
-    if (!(otherLine instanceof Line)) return false;
-    return this.slope === otherLine.slope;
+  isParallelTo(other) {
+    if (!(other instanceof Line)) return false;
+    return this.slope === other.slope;
+  }
+
+  findX(ordinate) {
+    return this.slope * (ordinate - this.endA.y) + this.endA.x;
   }
 
   toString() {

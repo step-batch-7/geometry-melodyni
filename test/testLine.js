@@ -109,5 +109,12 @@ describe("Line", () => {
       const other = { slope: 1 };
       assert.isFalse(lineA.isParallelTo(other));
     });
+
+    describe("findX", () => {
+      it("should calculate abscissa for a line and given ordinate", () => {
+        const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
+        assert.strictEqual(line.findX(4), 4);
+      });
+    });
   });
 });
