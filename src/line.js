@@ -47,6 +47,7 @@ class Line {
   }
 
   findX(ordinate) {
+    if (!isOrdinateInRange(ordinate, this.endA.y, this.endB.y)) return NaN;
     return (ordinate - this.endA.y) / this.slope + this.endA.x;
   }
 

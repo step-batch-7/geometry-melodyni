@@ -116,11 +116,19 @@ describe("Line", () => {
       const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
       assert.strictEqual(line.findX(4), 4);
     });
+    it("should give Nan if given ordinate is outside the line", () => {
+      const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
+      assert.isNaN(line.findX(-5));
+    });
   });
   describe("findY", () => {
     it("should calculate ordinate of a line and given abscissa", () => {
       const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
       assert.strictEqual(line.findY(2), 2);
+    });
+    it("should give Nan if given abscissa is outside the line", () => {
+      const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
+      assert.isNaN(line.findX(-18));
     });
   });
   describe("split", () => {
@@ -151,6 +159,11 @@ describe("Line", () => {
       const line = new Line({ x: 2, y: 4 }, { x: 4, y: 4 });
       const point = new Point(3, 4);
       assert.isTrue(line.hasPoint(point));
+    });
+    it("should give false if given point is not on the given line", () => {
+      const line = new Line({ x: 2, y: 4 }, { x: 4, y: 4 });
+      const point = new Point(0, 0);
+      assert.isFalse(line.hasPoint(point));
     });
   });
 });
