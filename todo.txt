@@ -1,10 +1,10 @@
 a.isParallelTo(b);//is true if line a is parallel to line b
 //findX & findY give NaN when outside the Line Segment
-p.visit((x,y)=>x*y) // gives 6
-p.visit((x,y)=>x+y) // gives 5  
-a.split() // gives 2 lines split exactly at the centre of line a
-p.clone() // gives a copy of point p
 
+a.split() // gives 2 lines split exactly at the centre of line a
+---done--- p.visit((x,y)=>x+y) // gives 5  
+---done--- p.visit((x,y)=>x*y) // gives 6
+---done--- p.clone() // gives a copy of point p
 ---done--- p1.isEqualTo(p2) //is true if points p1 and p2 are on same x,y coordinates
 ---done--- a.isEqualTo(b) //is true if line a and line b have same end points
 ---done--- a.toString() // "[Line (1,2) to (2,3)]"
