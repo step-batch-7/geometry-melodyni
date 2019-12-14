@@ -1,4 +1,6 @@
 "use strict";
+const Point = require("./point");
+
 const arePointsEqual = function(pointA, pointB) {
   return pointA.x === pointB.x && pointA.y === pointB.y;
 };
@@ -32,6 +34,15 @@ class Line {
 
   toString() {
     return `[Line (${this.endA.x},${this.endA.y}) to (${this.endB.x},${this.endB.y})]`;
+  }
+
+  split() {
+    const midAbscissa = (this.endA.x + this.endB.x) / 2;
+    const midOrdinate = (this.endA.y + this.endB.y) / 2;
+    const midPoint = new Point(midAbscissa, midOrdinate);
+    const lineA = new Line(this.endA, midPoint);
+    const lineB = new Line(midPoint, this.endB);
+    return [lineA, lineB];
   }
 
   get length() {

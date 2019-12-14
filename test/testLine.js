@@ -122,4 +122,13 @@ describe("Line", () => {
       assert.strictEqual(line.findY(2), 2);
     });
   });
+  describe("split", () => {
+    it("should split given line into two equal parts", () => {
+      const line = new Line({ x: 2, y: 4 }, { x: 6, y: 4 });
+      const lineA = new Line({ x: 2, y: 4 }, { x: 4, y: 4 });
+      const lineB = new Line({ x: 4, y: 4 }, { x: 6, y: 4 });
+      const expected = [lineA, lineB];
+      assert.deepStrictEqual(line.split(), expected);
+    });
+  });
 });
