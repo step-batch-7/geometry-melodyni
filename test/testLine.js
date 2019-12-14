@@ -33,7 +33,7 @@ describe("Line", () => {
   describe("toString", () => {
     it("should represent ends of points of the line", () => {
       const line = new Line({ x: 5, y: 10 }, { x: 10, y: 10 });
-      assert.strictEqual(line.toString(), "Line (5,10)-----(10,10)");
+      assert.strictEqual(line.toString(), "[Line (5,10) to (10,10)]");
     });
   });
   describe("length", () => {
