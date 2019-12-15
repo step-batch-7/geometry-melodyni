@@ -5,14 +5,11 @@ const arePointsEqual = function(pointA, pointB) {
   return pointA.x === pointB.x && pointA.y === pointB.y;
 };
 
-const isAbscissaInRange = function(abscissa, endAX, endBX) {
-  const [lowerX, higherX] = [endAX, endBX].sort((a, b) => a - b);
-  return lowerX <= abscissa && abscissa <= higherX;
-};
-
-const isOrdinateInRange = function(ordinate, endAY, endBY) {
-  const [lowerY, higherY] = [endAY, endBY].sort((a, b) => a - b);
-  return lowerY <= ordinate && ordinate <= higherY;
+const isInRange = function(number, rangeEndA, rangeEndB) {
+  const [lowerLimit, higherLimit] = [rangeEndA, rangeEndB].sort(
+    (a, b) => a - b
+  );
+  return lowerLimit <= number && number <= higherLimit;
 };
 
 const arePointsCollinear = function(pointA, pointB, pointC) {
@@ -52,12 +49,12 @@ class Line {
   }
 
   findX(ordinate) {
-    if (!isOrdinateInRange(ordinate, this.endA.y, this.endB.y)) return NaN;
+    if (!isInRange(ordinate, this.endA.y, this.endB.y)) return NaN;
     return (ordinate - this.endA.y) / this.slope + this.endA.x;
   }
 
   findY(abscissa) {
-    if (!isAbscissaInRange(abscissa, this.endA.x, this.endB.x)) return NaN;
+    if (!isInRange(abscissa, this.endA.x, this.endB.x)) return NaN;
     return (abscissa - this.endA.x) * this.slope + this.endA.y;
   }
 

@@ -79,12 +79,12 @@ describe("Line", () => {
       assert.isNaN(line.slope);
     });
 
-    it("should give slope Infinity for equal abscissa", () => {
+    it("should give slope Infinity for equal abscissa and endA-y is lesser than endB-y", () => {
       const line = new Line({ x: 10, y: 2 }, { x: 10, y: 10 });
       assert.strictEqual(line.slope, Infinity);
     });
 
-    it("should give slope -Infinity for equal abscissa ", () => {
+    it("should give slope -Infinity for equal abscissa and endA-y is greater than endB-y", () => {
       const line = new Line({ x: 10, y: 12 }, { x: 10, y: 2 });
       assert.strictEqual(line.slope, -Infinity);
     });
@@ -134,7 +134,7 @@ describe("Line", () => {
     });
   });
   describe("findX", () => {
-    it("should calculate abscissa of a line and given ordinate", () => {
+    it("should calculate abscissa of a line for given ordinate", () => {
       const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
       assert.strictEqual(line.findX(4), 4);
     });
@@ -148,7 +148,7 @@ describe("Line", () => {
     });
   });
   describe("findY", () => {
-    it("should calculate ordinate of a line and given abscissa", () => {
+    it("should calculate ordinate of a line for given abscissa", () => {
       const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
       assert.strictEqual(line.findY(2), 2);
     });
@@ -198,11 +198,6 @@ describe("Line", () => {
     it("should give false if given value is not an instance and doesn't have x y fields", () => {
       const line = new Line({ x: 2, y: 2 }, { x: 4, y: 4 });
       const point = [];
-      assert.isFalse(line.hasPoint(point));
-    });
-    it("should give false if given value is not an instance and doesn't have x y fields", () => {
-      const line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
-      const point = new Point(2, 3);
       assert.isFalse(line.hasPoint(point));
     });
   });

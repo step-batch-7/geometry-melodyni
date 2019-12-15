@@ -47,12 +47,5 @@ describe("point", () => {
       };
       assert.strictEqual(pointA.visit(addCoordinates), 7);
     });
-    it("should visit the given reference and perform operation on coordinates of point", () => {
-      const pointA = new Point(5, 2);
-      const multipleCoordinates = function(x, y) {
-        return x * y;
-      };
-      assert.strictEqual(pointA.visit(multipleCoordinates), 10);
-    });
   });
 });
