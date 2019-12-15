@@ -137,11 +137,11 @@ describe("Line", () => {
     });
     it("should give Nan if given abscissa is lesser than lower abscissa of the line", () => {
       const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
-      assert.isNaN(line.findX(-18));
+      assert.isNaN(line.findY(-18));
     });
     it("should give Nan if given abscissa  is greater than higher abscissa of the line", () => {
       const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
-      assert.isNaN(line.findX(-18));
+      assert.isNaN(line.findY(-18));
     });
   });
   describe("split", () => {

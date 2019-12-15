@@ -45,6 +45,7 @@ class Line {
   }
 
   findY(abscissa) {
+    if (!isAbscissaInRange(abscissa, this.endA.x, this.endB.x)) return NaN;
     return (abscissa - this.endA.x) * this.slope + this.endA.y;
   }
 
