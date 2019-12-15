@@ -15,10 +15,6 @@ const isOrdinateInRange = function(ordinate, endAY, endBY) {
   return lowerY <= ordinate && ordinate <= higherY;
 };
 
-const calcIntercept = function(abscissa, ordinate, slope) {
-  return ordinate - abscissa * slope;
-};
-
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
