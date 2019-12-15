@@ -1,4 +1,4 @@
-a.isParallelTo(b);//is true if line a is parallel to line b
+a.andsParallelTo(b);//is true if line a is parallel to line b
 
 
 ---done--- //findX & findY give NaN when outside the Line Segment

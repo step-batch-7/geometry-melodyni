@@ -6,17 +6,17 @@ const arePointsEqual = function(pointA, pointB) {
 };
 
 const isAbscissaInRange = function(abscissa, endAX, endBX) {
-  return (
-    (endAX >= abscissa && abscissa >= endBX) ||
-    (endBX >= abscissa && abscissa >= endAX)
-  );
+  const [lowerX, higherX] = [endAX, endBX].sort((a, b) => a - b);
+  return lowerX <= abscissa && abscissa <= higherX;
 };
 
 const isOrdinateInRange = function(ordinate, endAY, endBY) {
-  return (
-    (endAY >= ordinate && ordinate >= endBY) ||
-    (endBY >= ordinate && ordinate >= endAY)
-  );
+  const [lowerY, higherY] = [endAY, endBY].sort((a, b) => a - b);
+  return lowerY <= ordinate && ordinate <= higherY;
+};
+
+const calcIntercept = function(abscissa, ordinate, slope) {
+  return ordinate - abscissa * slope;
 };
 
 class Line {
@@ -35,10 +35,7 @@ class Line {
 
   hasPoint(other) {
     if (!(other instanceof Point)) return false;
-    return (
-      isAbscissaInRange(other.x, this.endA.x, this.endB.x) &&
-      isOrdinateInRange(other.y, this.endA.y, this.endB.y)
-    );
+    return other.x === this.findX(other.y) || other.y === this.findY(other.x);
   }
 
   isParallelTo(other) {

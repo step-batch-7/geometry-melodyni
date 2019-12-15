@@ -38,22 +38,22 @@ describe("Line", () => {
     });
   });
   describe("length", () => {
-    it("should calculate length of the line for given positive integer points ", () => {
+    it("should calculate length of the line for given points (positive integer value) ", () => {
       const line = new Line({ x: 5, y: 10 }, { x: 10, y: 10 });
       assert.strictEqual(line.length, 5);
     });
 
-    it("should calculate length of the line for given negative integer points ", () => {
+    it("should calculate length of the line for given points (negative integer value) ", () => {
       const line = new Line({ x: -5, y: 10 }, { x: 10, y: 10 });
       assert.strictEqual(line.length, 15);
     });
 
-    it("should calculate length of the line having floating points", () => {
+    it("should calculate length of the line for given points (floating value)", () => {
       const line = new Line({ x: 2.3, y: 10 }, { x: 10.9, y: 10 });
       assert.approximately(line.length, 8, 1);
     });
 
-    it("should give 0 for point which is not a line", () => {
+    it("should give 0 for points which is not a line", () => {
       const line = new Line({ x: 10, y: 10 }, { x: 10, y: 10 });
       assert.strictEqual(line.length, 0);
     });
@@ -75,12 +75,17 @@ describe("Line", () => {
       assert.strictEqual(line.slope, 0);
     });
 
+    it("should give NaN for a line with same end Points", () => {
+      const line = new Line({ x: 12, y: 12 }, { x: 12, y: 12 });
+      assert.isNaN(line.slope);
+    });
+
     it("should give slope Infinity for equal abscissa", () => {
       const line = new Line({ x: 10, y: 2 }, { x: 10, y: 10 });
       assert.strictEqual(line.slope, Infinity);
     });
 
-    it("should give slope -Infinity for equal abscissa", () => {
+    it("should give slope -Infinity for equal abscissa ", () => {
       const line = new Line({ x: 10, y: 12 }, { x: 10, y: 2 });
       assert.strictEqual(line.slope, -Infinity);
     });
@@ -116,9 +121,13 @@ describe("Line", () => {
       const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
       assert.strictEqual(line.findX(4), 4);
     });
-    it("should give Nan if given ordinate is outside the line", () => {
+    it("should give Nan if given ordinate is lesser than lower ordinate of the line", () => {
       const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
       assert.isNaN(line.findX(-5));
+    });
+    it("should give Nan if given ordinate is greater than higher ordinate of the line", () => {
+      const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
+      assert.isNaN(line.findX(15));
     });
   });
   describe("findY", () => {
@@ -126,7 +135,11 @@ describe("Line", () => {
       const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
       assert.strictEqual(line.findY(2), 2);
     });
-    it("should give Nan if given abscissa is outside the line", () => {
+    it("should give Nan if given abscissa is lesser than lower abscissa of the line", () => {
+      const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
+      assert.isNaN(line.findX(-18));
+    });
+    it("should give Nan if given abscissa  is greater than higher abscissa of the line", () => {
       const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
       assert.isNaN(line.findX(-18));
     });
@@ -139,17 +152,10 @@ describe("Line", () => {
       const expected = [lineA, lineB];
       assert.deepStrictEqual(line.split(), expected);
     });
-    it("should split given line into two equal parts and handle negative integer value", () => {
-      const line = new Line({ x: 2, y: -4 }, { x: 6, y: 4 });
-      const lineA = new Line({ x: 2, y: -4 }, { x: 4, y: 0 });
-      const lineB = new Line({ x: 4, y: 0 }, { x: 6, y: 4 });
-      const expected = [lineA, lineB];
-      assert.deepStrictEqual(line.split(), expected);
-    });
-    it("should split given line into two equal parts and handle floating value", () => {
-      const line = new Line({ x: 2, y: 4.5 }, { x: 6.8, y: 4 });
-      const lineA = new Line({ x: 2, y: 4.5 }, { x: 4.4, y: 4.25 });
-      const lineB = new Line({ x: 4.4, y: 4.25 }, { x: 6.8, y: 4 });
+    it("should give two lines of length 0 if length of given line is 0 ", () => {
+      const line = new Line({ x: 10, y: 2 }, { x: 10, y: 2 });
+      const lineA = new Line({ x: 10, y: 2 }, { x: 10, y: 2 });
+      const lineB = new Line({ x: 10, y: 2 }, { x: 10, y: 2 });
       const expected = [lineA, lineB];
       assert.deepStrictEqual(line.split(), expected);
     });
@@ -163,6 +169,23 @@ describe("Line", () => {
     it("should give false if given point is not on the given line", () => {
       const line = new Line({ x: 2, y: 4 }, { x: 4, y: 4 });
       const point = new Point(0, 0);
+      assert.isFalse(line.hasPoint(point));
+    });
+
+    it("should give false if given value is not an instance of point but has x y fields", () => {
+      const line = new Line({ x: 2, y: 2 }, { x: 4, y: 4 });
+      const point = { x: 3, y: 3 };
+      assert.isFalse(line.hasPoint(point));
+    });
+
+    it("should give false if given value is not an instance and doesn't have x y fields", () => {
+      const line = new Line({ x: 2, y: 2 }, { x: 4, y: 4 });
+      const point = [];
+      assert.isFalse(line.hasPoint(point));
+    });
+    it("should give false if given value is not an instance and doesn't have x y fields", () => {
+      const line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
+      const point = new Point(2, 3);
       assert.isFalse(line.hasPoint(point));
     });
   });
