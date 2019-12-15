@@ -1,6 +1,5 @@
 "use strict";
-const chai = require("chai");
-const assert = chai.assert;
+const assert = require("chai").assert;
 const Line = require("../src/line");
 const Point = require("../src/point");
 
@@ -104,16 +103,34 @@ describe("Line", () => {
       assert.isFalse(lineA.isParallelTo(lineB));
     });
 
-    it("should give true for coincident lines", () => {
+    it("should give false for coincident lines", () => {
       const lineA = new Line({ x: 0, y: 1 }, { x: 10, y: 10 });
       const lineB = new Line({ x: 0, y: 1 }, { x: 10, y: 10 });
-      assert.isTrue(lineA.isParallelTo(lineB));
+      assert.isFalse(lineA.isParallelTo(lineB));
     });
 
-    it("should give false for the other type having equal slope field", () => {
+    it("should give false for lines that will meet if extended", () => {
+      const lineA = new Line({ x: 0, y: 10 }, { x: 0, y: 0 });
+      const lineB = new Line({ x: 0, y: -1 }, { x: 0, y: -10 });
+      assert.isFalse(lineA.isParallelTo(lineB));
+    });
+
+    it("should give false if other is not an instance of line ", () => {
+      const lineA = new Line({ x: 0, y: 2 }, { x: 10, y: 12 });
+      const other = [];
+      assert.isFalse(lineA.isParallelTo(other));
+    });
+
+    it("should give false if other is not an instance of line but have equal slope field", () => {
       const lineA = new Line({ x: 0, y: 2 }, { x: 10, y: 12 });
       const other = { slope: 1 };
       assert.isFalse(lineA.isParallelTo(other));
+    });
+
+    it("should give false if lineB is part of lineA", () => {
+      const lineA = new Line({ x: -3, y: 2 }, { x: 20, y: 2 });
+      const lineB = new Line({ x: -2, y: 2 }, { x: 10, y: 2 });
+      assert.isFalse(lineA.isParallelTo(lineB));
     });
   });
   describe("findX", () => {
@@ -141,7 +158,7 @@ describe("Line", () => {
     });
     it("should give Nan if given abscissa  is greater than higher abscissa of the line", () => {
       const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
-      assert.isNaN(line.findY(-18));
+      assert.isNaN(line.findY(18));
     });
   });
   describe("split", () => {

@@ -1,6 +1,6 @@
-a.andsParallelTo(b);//is true if line a is parallel to line b
+* read code & refactor
 
-
+---done--- a.andsParallelTo(b);//is true if line a is parallel to line b
 ---done--- //findX & findY give NaN when outside the Line Segment
 ---done--- a.hasPoint(p) // is true if point p is on the line a
 ---done--- a.split() // gives 2 lines split exactly at the centre of line a
@@ -21,4 +21,3 @@ a.andsParallelTo(b);//is true if line a is parallel to line b
 ---done--- modify variable names
 ---done--- modify isEqualTo
 ---done--- extract logic into smaller functions 
-* read code & refactor

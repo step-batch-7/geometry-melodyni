@@ -15,6 +15,13 @@ const isOrdinateInRange = function(ordinate, endAY, endBY) {
   return lowerY <= ordinate && ordinate <= higherY;
 };
 
+const arePointsCollinear = function(pointA, pointB, pointC) {
+  const [x1, y1] = [pointA.x, pointA.y];
+  const [x2, y2] = [pointB.x, pointB.y];
+  const [x3, y3] = [pointC.x, pointC.y];
+  return x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2) == 0;
+};
+
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
@@ -36,7 +43,12 @@ class Line {
 
   isParallelTo(other) {
     if (!(other instanceof Line)) return false;
-    return this.slope === other.slope;
+    const areLinesMeeting = arePointsCollinear(
+      this.endA,
+      this.endB,
+      other.endA
+    );
+    return !areLinesMeeting && this.slope === other.slope;
   }
 
   findX(ordinate) {
