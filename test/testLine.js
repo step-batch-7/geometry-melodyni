@@ -146,6 +146,14 @@ describe("Line", () => {
       const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
       assert.isNaN(line.findX(15));
     });
+    it("should give NaN if end points of given lines are same", function() {
+      const line = new Line({ x: 5, y: 7 }, { x: 5, y: 7 });
+      assert.isNaN(line.findX(2));
+    });
+    it("should give valid x value if more than one x are possible for given ordinate", () => {
+      const line = new Line({ x: -10, y: 10 }, { x: 10, y: 10 });
+      assert.strictEqual(line.findX(10), -10);
+    });
   });
   describe("findY", () => {
     it("should calculate ordinate of a line for given abscissa", () => {
@@ -159,6 +167,14 @@ describe("Line", () => {
     it("should give Nan if given abscissa  is greater than higher abscissa of the line", () => {
       const line = new Line({ x: 4, y: 4 }, { x: 2, y: 2 });
       assert.isNaN(line.findY(18));
+    });
+    it("should give NaN if end points of given lines are same", function() {
+      const line = new Line({ x: 5, y: 7 }, { x: 5, y: 7 });
+      assert.isNaN(line.findY(2));
+    });
+    it("should give valid y value if more than one y are possible for given abscissa", () => {
+      const line = new Line({ x: 1, y: 10 }, { x: 1, y: -10 });
+      assert.strictEqual(line.findY(1), 10);
     });
   });
   describe("split", () => {

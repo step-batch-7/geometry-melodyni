@@ -5,10 +5,8 @@ const arePointsEqual = function(pointA, pointB) {
   return pointA.x === pointB.x && pointA.y === pointB.y;
 };
 
-const isInRange = function(number, rangeEndA, rangeEndB) {
-  const [lowerLimit, higherLimit] = [rangeEndA, rangeEndB].sort(
-    (a, b) => a - b
-  );
+const isInRange = function(number, range) {
+  const [lowerLimit, higherLimit] = range.sort((a, b) => a - b);
   return lowerLimit <= number && number <= higherLimit;
 };
 
@@ -49,12 +47,16 @@ class Line {
   }
 
   findX(ordinate) {
-    if (!isInRange(ordinate, this.endA.y, this.endB.y)) return NaN;
+    const range = [this.endA.y, this.endB.y];
+    if (!isInRange(ordinate, range)) return NaN;
+    if (this.slope == 0) return this.endA.x;
     return (ordinate - this.endA.y) / this.slope + this.endA.x;
   }
 
   findY(abscissa) {
-    if (!isInRange(abscissa, this.endA.x, this.endB.x)) return NaN;
+    const range = [this.endA.x, this.endB.x];
+    if (!isInRange(abscissa, range)) return NaN;
+    if (this.slope === Infinity || this.slope === -Infinity) return this.endA.y;
     return (abscissa - this.endA.x) * this.slope + this.endA.y;
   }
 

@@ -48,4 +48,16 @@ describe("point", () => {
       assert.strictEqual(pointA.visit(addCoordinates), 7);
     });
   });
+  describe("findDistanceTo", () => {
+    it("should give the distance between two points", () => {
+      const pointA = new Point(2, 2);
+      const pointB = new Point(5, 2);
+      assert.strictEqual(pointA.findDistanceTo(pointB), 3);
+    });
+    it("should give 0 if other is not an instance of Point ", () => {
+      const pointA = new Point(5, 2);
+      const pointB = { x: 5, y: 2 };
+      assert.strictEqual(pointA.findDistanceTo(pointB), 0);
+    });
+  });
 });

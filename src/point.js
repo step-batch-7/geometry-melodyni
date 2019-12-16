@@ -15,6 +15,13 @@ class Point {
     return `[Point @(${this.x},${this.y})]`;
   }
 
+  findDistanceTo(other) {
+    if (!other instanceof Point) return 0;
+    return Math.sqrt(
+      Math.pow(other.x - this.x, 2) + Math.pow(other.y - this.y, 2)
+    );
+  }
+
   clone() {
     return new Point(this.x, this.y);
   }
