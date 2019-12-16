@@ -13,6 +13,14 @@ class Circle {
     return isCommonCentre && this.radius === other.radius;
   }
 
+  hasPoint(other) {
+    return (
+      Math.pow(other.x - this.centre.x, 2) +
+        Math.pow(other.y - this.centre.y, 2) ===
+      this.radius ** 2
+    );
+  }
+
   get area() {
     return 3.1415 * this.radius * this.radius;
   }

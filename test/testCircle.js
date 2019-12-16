@@ -2,6 +2,7 @@
 
 const assert = require("chai").assert;
 const Circle = require("../src/circle");
+const Point = require("../src/point");
 
 describe("circle", () => {
   describe("toString", () => {
@@ -38,6 +39,18 @@ describe("circle", () => {
     it("should calculate the perimeter of circle", () => {
       const circle = new Circle({ x: 5, y: 5 }, 10);
       assert.approximately(circle.perimeter, 62.83, 1);
+    });
+  });
+  describe("hasPoint", () => {
+    it("should give true if circle has given point", () => {
+      const point = new Point(15, 5);
+      const circle = new Circle({ x: 5, y: 5 }, 10);
+      assert.isTrue(circle.hasPoint(point));
+    });
+    it("should give false if circle doesn't have given point", () => {
+      const point = new Point(4, 5);
+      const circle = new Circle({ x: 5, y: 5 }, 10);
+      assert.isFalse(circle.hasPoint(point));
     });
   });
 });

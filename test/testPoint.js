@@ -3,6 +3,7 @@
 const assert = require("chai").assert;
 const Point = require("../src/point");
 const Line = require("../src/line");
+const Circle = require("../src/circle");
 
 describe("point", () => {
   describe("toString", () => {
@@ -72,12 +73,12 @@ describe("point", () => {
     });
   });
   describe("isOn", () => {
-    it.only("should give true if point is on the line", () => {
+    it("should give true if point is on the line", () => {
       const pointA = new Point(2, 1);
       const lineA = new Line({ x: 1, y: 1 }, { x: 6, y: 1 });
       assert.isTrue(pointA.isOn(lineA));
     });
-    it.only("should give false if point is not on the line", () => {
+    it("should give false if point is not on the line", () => {
       const pointA = new Point(0, 0);
       const lineA = new Line({ x: 1, y: 1 }, { x: 6, y: 1 });
       assert.isFalse(pointA.isOn(lineA));
