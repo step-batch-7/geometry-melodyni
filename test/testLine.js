@@ -233,6 +233,14 @@ describe("Line", () => {
       const expectedPoint = new Point(2, 9);
       assert.isTrue(expectedPoint.isEqualTo(line.findPointFromStart(0)));
     });
+    it("should give null if given distance go beyond the length of line", () => {
+      const line = new Line({ x: 10, y: 10 }, { x: 9, y: 9 });
+      assert.isNull(line.findPointFromEnd(3));
+    });
+    it("should give null if given distance in negative ", () => {
+      const line = new Line({ x: 10, y: 10 }, { x: 9, y: 9 });
+      assert.isNull(line.findPointFromEnd(-5));
+    });
   });
   describe("findPointFromEnd", () => {
     it("should find a point from end of a line to a given distance ", () => {
@@ -249,6 +257,14 @@ describe("Line", () => {
       const line = new Line({ x: 8, y: 1 }, { x: 2, y: 9 });
       const expectedPoint = new Point(2, 9);
       assert.isTrue(expectedPoint.isEqualTo(line.findPointFromEnd(0)));
+    });
+    it("should give null if given distance go beyond the length of line", () => {
+      const line = new Line({ x: 8, y: 1 }, { x: 2, y: 9 });
+      assert.isNull(line.findPointFromEnd(12));
+    });
+    it("should give null if given distance in negative ", () => {
+      const line = new Line({ x: 8, y: 1 }, { x: 2, y: 9 });
+      assert.isNull(line.findPointFromEnd(-12));
     });
   });
 });
