@@ -1,10 +1,6 @@
 "use strict";
 const Point = require("./point");
 
-const arePointsEqual = function(pointA, pointB) {
-  return pointA.x === pointB.x && pointA.y === pointB.y;
-};
-
 const isInRange = function(number, range) {
   const [lowerLimit, higherLimit] = range.sort((a, b) => a - b);
   return lowerLimit <= number && number <= higherLimit;
@@ -19,16 +15,13 @@ const arePointsCollinear = function(pointA, pointB, pointC) {
 
 class Line {
   constructor(endA, endB) {
-    this.endA = { x: endA.x, y: endA.y };
-    this.endB = { x: endB.x, y: endB.y };
+    this.endA = new Point(endA.x, endA.y);
+    this.endB = new Point(endB.x, endB.y);
   }
 
   isEqualTo(other) {
     if (!(other instanceof Line)) return false;
-    return (
-      arePointsEqual(this.endA, other.endA) &&
-      arePointsEqual(this.endB, other.endB)
-    );
+    return this.endA.isEqualTo(other.endA) && this.endB.isEqualTo(other.endB);
   }
 
   hasPoint(other) {
@@ -87,9 +80,7 @@ class Line {
   }
 
   get length() {
-    const pointA = new Point(this.endA.x, this.endA.y);
-    const pointB = new Point(this.endB.x, this.endB.y);
-    return pointA.findDistanceTo(pointB);
+    return this.endA.findDistanceTo(this.endB);
   }
 
   get slope() {
