@@ -1,7 +1,11 @@
 * read code & refactor
-change line length property according to point's findDistanceTo
-p1.findDistanceTo(p2) //gives distance between points p1 & p2
 
+p.isOn(a) // is true if point p is on line a
+a.findPointFromEnd(2) // finds a point at a distance of 2 from the start of line a
+a.findPointFromStart(2) // finds a point at a distance of 2 from the start of line a
+
+---done--- change line length property according to point's findDistanceTo
+---done--- p1.findDistanceTo(p2) //gives distance between points p1 & p2
 ---done--- a.andsParallelTo(b);//is true if line a is parallel to line b
 ---done--- //findX & findY give NaN when outside the Line Segment
 ---done--- a.hasPoint(p) // is true if point p is on the line a

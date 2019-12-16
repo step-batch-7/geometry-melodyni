@@ -217,4 +217,21 @@ describe("Line", () => {
       assert.isFalse(line.hasPoint(point));
     });
   });
+  describe("findPointFromStart", () => {
+    it("should find a point from start of a line to a given distance ", () => {
+      const line = new Line({ x: 2, y: 1 }, { x: 6, y: 1 });
+      const expectedPoint = new Point(4, 1);
+      assert.isTrue(expectedPoint.isEqualTo(line.findPointFromStart(2)));
+    });
+    it("should give endB point if given distance is equal to the length of line ", () => {
+      const line = new Line({ x: 2, y: 9 }, { x: 8, y: 1 });
+      const expectedPoint = new Point(8, 1);
+      assert.isTrue(expectedPoint.isEqualTo(line.findPointFromStart(10)));
+    });
+    it("should give endA point of given line if given distance is 0 ", () => {
+      const line = new Line({ x: 2, y: 9 }, { x: 8, y: 1 });
+      const expectedPoint = new Point(2, 9);
+      assert.isTrue(expectedPoint.isEqualTo(line.findPointFromStart(0)));
+    });
+  });
 });

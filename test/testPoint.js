@@ -54,10 +54,20 @@ describe("point", () => {
       const pointB = new Point(5, 2);
       assert.strictEqual(pointA.findDistanceTo(pointB), 3);
     });
-    it("should give 0 if other is not an instance of Point ", () => {
+    it("should give 0 if two given points are same ", () => {
+      const pointA = new Point(5, 2);
+      const pointB = new Point(5, 2);
+      assert.strictEqual(pointA.findDistanceTo(pointB), 0);
+    });
+    it("should give NaN if other is not an instance of Point ", () => {
+      const pointA = new Point(5, 2);
+      const pointB = "";
+      assert.isNaN(pointA.findDistanceTo(pointB));
+    });
+    it("should give NaN if other is not an instance of Point but have x y fields ", () => {
       const pointA = new Point(5, 2);
       const pointB = { x: 5, y: 2 };
-      assert.strictEqual(pointA.findDistanceTo(pointB), 0);
+      assert.isNaN(pointA.findDistanceTo(pointB));
     });
   });
 });

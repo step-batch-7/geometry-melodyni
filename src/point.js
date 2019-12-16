@@ -16,7 +16,7 @@ class Point {
   }
 
   findDistanceTo(other) {
-    if (!other instanceof Point) return 0;
+    if (!(other instanceof Point)) return NaN;
     return Math.sqrt(
       Math.pow(other.x - this.x, 2) + Math.pow(other.y - this.y, 2)
     );
