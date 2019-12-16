@@ -22,6 +22,10 @@ class Point {
     );
   }
 
+  isOn(other) {
+    return other.hasPoint(this);
+  }
+
   clone() {
     return new Point(this.x, this.y);
   }

@@ -3,6 +3,11 @@
 p.isOn(a) // is true if point p is on line a
 
 
+---done--- new Circle({x:0,y:0},5) // creates a circle of radius 5 at 0,0
+---done--- c.toString() // [Circle @(1,2) radius 5]
+---done--- c1.isEqualTo(c2) // is true if both circles are at same location & are of same size (edited) 
+---done--- c.area // gives the area of circle
+---done--- c.perimeter // gives the perimeter of circle
 ---done--- a.findPointFromEnd(2) // finds a point at a distance of 2 from the start of line a
 ---done--- add test for condition if distance exceeds length of line
 ---done--- add test for condition if distance is in negative;
