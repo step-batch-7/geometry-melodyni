@@ -73,6 +73,8 @@ class Line {
     return `[Line (${this.endA.x},${this.endA.y}) to (${this.endB.x},${this.endB.y})]`;
   }
 
+  findPointFrom({ distance, totalDistance }) {}
+
   findPointFromStart(distance) {
     const totalDistance = this.length;
     const ratio = distance / totalDistance;
@@ -80,12 +82,10 @@ class Line {
     const ordinate = (1 - ratio) * this.endA.y + ratio * this.endB.y;
     return new Point(abscissa, ordinate);
   }
+
   findPointFromEnd(distance) {
-    const totalDistance = this.length;
-    const ratio = distance / totalDistance;
-    const abscissa = (1 - ratio) * this.endB.x + ratio * this.endA.x;
-    const ordinate = (1 - ratio) * this.endB.y + ratio * this.endA.y;
-    return new Point(abscissa, ordinate);
+    const line = new Line(this.endB, this.endA);
+    return line.findPointFromStart(distance);
   }
 
   get length() {

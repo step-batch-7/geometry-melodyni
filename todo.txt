@@ -2,7 +2,6 @@
 
 p.isOn(a) // is true if point p is on line a
 
-* extract common logic of findPointFromEnd & findPointFromStart into functions
 
 * a.findPointFromEnd(2) // finds a point at a distance of 2 from the start of line a
 --> add test for condition if distance exceeds length of line
@@ -12,6 +11,7 @@ p.isOn(a) // is true if point p is on line a
 --> add test for condition if distance exceeds length of line
 --> add test for condition if distance is in negative;  
 
+---done--- remove common logic of findPointFromEnd & findPointFromStart into functions
 
 ---done--- change line length property according to point's findDistanceTo
 ---done--- p1.findDistanceTo(p2) //gives distance between points p1 & p2
