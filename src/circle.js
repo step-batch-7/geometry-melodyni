@@ -12,6 +12,11 @@ class Circle {
     const isCommonCentre = this.centre.isEqualTo(other.centre);
     return isCommonCentre && this.radius === other.radius;
   }
+
+  get area() {
+    return 3.1415 * this.radius * this.radius;
+  }
+
   toString() {
     return `[Circle @(${this.centre.x},${this.centre.y}) radius ${this.radius}]`;
   }
