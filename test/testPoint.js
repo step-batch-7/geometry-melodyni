@@ -83,5 +83,15 @@ describe("point", () => {
       const lineA = new Line({ x: 1, y: 1 }, { x: 6, y: 1 });
       assert.isFalse(pointA.isOn(lineA));
     });
+    it("should give true if point is on the given circle ", () => {
+      const pointA = new Point(1, 6);
+      const circle = new Circle({ x: 1, y: 1 }, 5);
+      assert.isTrue(pointA.isOn(circle));
+    });
+    it("should give false if point is not on the given circle ", () => {
+      const pointA = new Point(0, 0);
+      const circle = new Circle({ x: 1, y: 1 }, 5);
+      assert.isFalse(pointA.isOn(circle));
+    });
   });
 });
