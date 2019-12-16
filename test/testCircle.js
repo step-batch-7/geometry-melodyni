@@ -34,4 +34,10 @@ describe("circle", () => {
       assert.approximately(circle.area, 314.15, 1);
     });
   });
+  describe("perimeter", () => {
+    it("should calculate the perimeter of circle", () => {
+      const circle = new Circle({ x: 5, y: 5 }, 10);
+      assert.approximately(circle.perimeter, 62.83, 1);
+    });
+  });
 });

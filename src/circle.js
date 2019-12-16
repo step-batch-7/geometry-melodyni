@@ -16,6 +16,9 @@ class Circle {
   get area() {
     return 3.1415 * this.radius * this.radius;
   }
+  get perimeter() {
+    return 2 * 3.1415 * this.radius;
+  }
 
   toString() {
     return `[Circle @(${this.centre.x},${this.centre.y}) radius ${this.radius}]`;
