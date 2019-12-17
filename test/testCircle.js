@@ -86,4 +86,26 @@ describe("circle", () => {
       assert.isNull(circleA.moveTo(centre));
     });
   });
+  describe("covers", () => {
+    it("should give true if point is inside the circle", () => {
+      const circle = new Circle({ x: 1, y: 5 }, 7);
+      const point = new Point(1, 10);
+      assert.isTrue(circle.covers(point));
+    });
+    it("should give false if point is outside the circle", () => {
+      const circle = new Circle({ x: 1, y: 5 }, 7);
+      const point = new Point(1, 15);
+      assert.isFalse(circle.covers(point));
+    });
+    it("should give false if other is not an instance of point ", () => {
+      const circle = new Circle({ x: 1, y: 5 }, 7);
+      const other = {};
+      assert.isFalse(circle.covers(other));
+    });
+    it("should give false if other is not an instance of point but has required fields ", () => {
+      const circle = new Circle({ x: 1, y: 5 }, 7);
+      const other = { x: 1, y: 10 };
+      assert.isFalse(circle.covers(other));
+    });
+  });
 });
