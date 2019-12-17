@@ -16,13 +16,27 @@ class Rectangle {
   toString() {
     return `[Rectangle (${this.endA.x},${this.endA.y}) to (${this.endC.x},${this.endC.y})]`;
   }
+
+  isEqualTo(other) {
+    if (!(other instanceof Rectangle)) return false;
+    const diagonalA = new Line(this.endA, this.endC);
+    const diagonalB = new Line(
+      this.getDiagonalPair.endB,
+      this.getDiagonalPair.endD
+    );
+    const otherDiagonal = new Line(other.endA, other.endC);
+    return [diagonalA, diagonalB].some(diagonal =>
+      otherDiagonal.isEqualTo(diagonal)
+    );
+  }
+
   hasPoint(other) {
     if (!(other instanceof Point)) return false;
     const { endB, endD } = this.getDiagonalPair;
     const AB = new Line(this.endA, endB);
     const BC = new Line(endB, this.endC);
     const CD = new Line(this.endC, endD);
-    const AD = new Line(this.endA, endD);
+    const AD = new Line(endD, this.endA);
     return [AB, BC, CD, AD].some(line => other.isOn(line));
   }
 

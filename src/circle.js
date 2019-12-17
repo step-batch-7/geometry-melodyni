@@ -25,7 +25,7 @@ class Circle {
 
   covers(other) {
     if (!(other instanceof Point)) return false;
-    return other.findDistanceTo(this.centre) < this.radius;
+    return other.findDistanceTo(this.centre) <= this.radius;
   }
 
   get area() {

@@ -92,6 +92,11 @@ describe("circle", () => {
       const point = new Point(1, 10);
       assert.isTrue(circle.covers(point));
     });
+    it("should give true if point is on the circle", () => {
+      const circle = new Circle({ x: 1, y: 5 }, 7);
+      const point = new Point(1, 12);
+      assert.isTrue(circle.covers(point));
+    });
     it("should give false if point is outside the circle", () => {
       const circle = new Circle({ x: 1, y: 5 }, 7);
       const point = new Point(1, 15);

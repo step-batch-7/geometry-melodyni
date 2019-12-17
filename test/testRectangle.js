@@ -82,4 +82,27 @@ describe("rectangle", () => {
       assert.isFalse(rectangle.covers(other));
     });
   });
+  describe("isEqualTo", () => {
+    it("should give true if two rectangles are same", () => {
+      const rectangleA = new Rectangle({ x: 5, y: 5 }, { x: 10, y: 0 });
+      const rectangleB = new Rectangle({ x: 5, y: 5 }, { x: 10, y: 0 });
+      assert.isTrue(rectangleA.isEqualTo(rectangleB));
+    });
+    it("should give false if locations are different but size of rectangle are equal", () => {
+      const rectangleA = new Rectangle({ x: 5, y: 5 }, { x: 0, y: 0 });
+      const rectangleB = new Rectangle({ x: 5, y: 5 }, { x: 10, y: 10 });
+      assert.isFalse(rectangleA.isEqualTo(rectangleB));
+    });
+
+    it("should give false if other is not a rectangle", () => {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 0, y: 0 });
+      const other = [];
+      assert.isFalse(rectangle.isEqualTo(other));
+    });
+    it("should give false if other is not a rectangle but has required fields", () => {
+      const rectangle = new Rectangle({ x: 5, y: 5 }, { x: 10, y: 0 });
+      const other = { endA: { x: 5, y: 5 }, endC: { x: 10, y: 0 } };
+      assert.isFalse(rectangle.isEqualTo(other));
+    });
+  });
 });
