@@ -52,5 +52,15 @@ describe("circle", () => {
       const circle = new Circle({ x: 5, y: 5 }, 10);
       assert.isFalse(circle.hasPoint(point));
     });
+    it("should give false if given point is not an instance of point and  has no x y fields", () => {
+      const point = "";
+      const circle = new Circle({ x: 5, y: 5 }, 10);
+      assert.isFalse(circle.hasPoint(point));
+    });
+    it("should give false if given point is not an instance of point but has x y fields", () => {
+      const point = { x: 4, y: 5 };
+      const circle = new Circle({ x: 5, y: 5 }, 10);
+      assert.isFalse(circle.hasPoint(point));
+    });
   });
 });

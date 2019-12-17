@@ -1,7 +1,7 @@
 * read code & refactor
 
-p.isOn(c) // is true if point p is on circle c
-c.hasPoint(p) // is true if circle c has point p on it
+---done--- p.isOn(c) // is true if point p is on circle c
+---done---c.hasPoint(p) // is true if circle c has point p on it
 
 ---done--- p.isOn(a) // is true if point p is on line a
 ---done--- new Circle({x:0,y:0},5) // creates a circle of radius 5 at 0,0

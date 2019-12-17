@@ -14,6 +14,7 @@ class Circle {
   }
 
   hasPoint(other) {
+    if (!(other instanceof Point)) return false;
     return (
       Math.pow(other.x - this.centre.x, 2) +
         Math.pow(other.y - this.centre.y, 2) ===
