@@ -1,5 +1,17 @@
 * read code & refactor
 
+r = new Rectangle({x:1,y:1},{x:5,y:4})// creates a rectangle given the coordinates of its diagonal
+r.toString() // "[Rectangle (1,1) to (2,3)]"
+r.area // gives the area of rectangle
+r.perimeter // gives the perimeter of the rectangle
+r1.isEqualTo(r2) //is true if both rectangles are on same coordinates
+
+
+ c.covers(p) // is true if point p is inside circle c
+
+
+---done--- c.moveTo({x:1,y:1}) // creates a new circle of same dimensions at 1,
+
 ---done--- p.isOn(c) // is true if point p is on circle c
 ---done---c.hasPoint(p) // is true if circle c has point p on it
 

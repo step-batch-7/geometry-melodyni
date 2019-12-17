@@ -15,11 +15,7 @@ class Circle {
 
   hasPoint(other) {
     if (!(other instanceof Point)) return false;
-    return (
-      Math.pow(other.x - this.centre.x, 2) +
-        Math.pow(other.y - this.centre.y, 2) ===
-      this.radius ** 2
-    );
+    return other.findDistanceTo(this.centre) === this.radius;
   }
 
   moveTo(other) {
