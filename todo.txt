@@ -1,5 +1,9 @@
 * read code & refactor
 
+
+r.hasPoint(p) // is true if point in on the rectangle r
+r.covers(p) // is true if point p is inside rectangle r
+//Rectangles have their edges parallel to x or y axis
 r = new Rectangle({x:1,y:1},{x:5,y:4})// creates a rectangle given the coordinates of its diagonal
 r.toString() // "[Rectangle (1,1) to (2,3)]"
 r.area // gives the area of rectangle
@@ -7,14 +11,10 @@ r.perimeter // gives the perimeter of the rectangle
 r1.isEqualTo(r2) //is true if both rectangles are on same coordinates
 
 
- c.covers(p) // is true if point p is inside circle c
-
-
+---done--- c.covers(p) // is true if point p is inside circle c
 ---done--- c.moveTo({x:1,y:1}) // creates a new circle of same dimensions at 1,
-
 ---done--- p.isOn(c) // is true if point p is on circle c
 ---done---c.hasPoint(p) // is true if circle c has point p on it
-
 ---done--- p.isOn(a) // is true if point p is on line a
 ---done--- new Circle({x:0,y:0},5) // creates a circle of radius 5 at 0,0
 ---done--- c.toString() // [Circle @(1,2) radius 5]

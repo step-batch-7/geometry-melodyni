@@ -11,4 +11,14 @@ describe("rectangle", () => {
       assert.strictEqual(rectangle.toString(), "[Rectangle (1,1) to (5,4)]");
     });
   });
+  describe("area", () => {
+    it("should calculate area of given rectangle", () => {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 4, y: 4 });
+      assert.strictEqual(rectangle.area, 16);
+    });
+    it("should give 0 as area if all points of rectangle are same", () => {
+      const rectangle = new Rectangle({ x: 4, y: 4 }, { x: 4, y: 4 });
+      assert.strictEqual(rectangle.area, 0);
+    });
+  });
 });

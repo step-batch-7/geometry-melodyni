@@ -15,6 +15,11 @@ class Rectangle {
   toString() {
     return `[Rectangle (${this.pointA.x},${this.pointA.y}) to (${this.pointC.x},${this.pointC.y})]`;
   }
+  get area() {
+    const length = this.pointA.findDistanceTo(this.#pointB);
+    const width = this.pointA.findDistanceTo(this.#pointD);
+    return length * width;
+  }
 }
 
 module.exports = Rectangle;
