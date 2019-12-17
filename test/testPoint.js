@@ -4,6 +4,7 @@ const assert = require("chai").assert;
 const Point = require("../src/point");
 const Line = require("../src/line");
 const Circle = require("../src/circle");
+const Rectangle = require("../src/rectangle");
 
 describe("point", () => {
   describe("toString", () => {
@@ -92,6 +93,16 @@ describe("point", () => {
       const pointA = new Point(0, 0);
       const circle = new Circle({ x: 1, y: 1 }, 5);
       assert.isFalse(pointA.isOn(circle));
+    });
+    it("should give true if point is on the given rectangle ", () => {
+      const pointA = new Point(5, 6);
+      const rectangle = new Rectangle({ x: 10, y: 10 }, { x: 5, y: 5 });
+      assert.isTrue(pointA.isOn(rectangle));
+    });
+    it("should give false if point is not on the given rectangle", () => {
+      const pointA = new Point(0, 0);
+      const rectangle = new Rectangle({ x: 10, y: 10 }, { x: 5, y: 5 });
+      assert.isFalse(pointA.isOn(rectangle));
     });
   });
 });
