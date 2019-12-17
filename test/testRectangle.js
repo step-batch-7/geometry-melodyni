@@ -20,6 +20,14 @@ describe("rectangle", () => {
       const rectangle = new Rectangle({ x: 4, y: 4 }, { x: 4, y: 4 });
       assert.strictEqual(rectangle.area, 0);
     });
+    it("should give 0 as area if diagonal of rectangle is parallel to x axis", () => {
+      const rectangle = new Rectangle({ x: 4, y: 4 }, { x: 4, y: 1 });
+      assert.strictEqual(rectangle.area, 0);
+    });
+    it("should give 0 as area if diagonal of rectangle is parallel to y axis", () => {
+      const rectangle = new Rectangle({ x: 1, y: 5 }, { x: 10, y: 5 });
+      assert.strictEqual(rectangle.area, 0);
+    });
   });
   describe("perimeter", () => {
     it("should calculate area of given rectangle", () => {
@@ -83,11 +91,12 @@ describe("rectangle", () => {
     });
   });
   describe("isEqualTo", () => {
-    it("should give true if two rectangles are same", () => {
+    it("should give true if rectangles are equal", () => {
       const rectangleA = new Rectangle({ x: 5, y: 5 }, { x: 10, y: 0 });
       const rectangleB = new Rectangle({ x: 5, y: 5 }, { x: 10, y: 0 });
       assert.isTrue(rectangleA.isEqualTo(rectangleB));
     });
+
     it("should give false if locations are different but size of rectangle are equal", () => {
       const rectangleA = new Rectangle({ x: 5, y: 5 }, { x: 0, y: 0 });
       const rectangleB = new Rectangle({ x: 5, y: 5 }, { x: 10, y: 10 });
