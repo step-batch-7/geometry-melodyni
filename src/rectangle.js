@@ -3,6 +3,11 @@
 const Point = require("./point");
 const Line = require("./line");
 
+const isInRange = function(number, range) {
+  const [lowerLimit, higherLimit] = range.sort((a, b) => a - b);
+  return lowerLimit <= number && number <= higherLimit;
+};
+
 class Rectangle {
   constructor(endA, endC) {
     this.endA = new Point(endA.x, endA.y);
@@ -19,6 +24,14 @@ class Rectangle {
     const CD = new Line(this.endC, endD);
     const AD = new Line(this.endA, endD);
     return [AB, BC, CD, AD].some(line => other.isOn(line));
+  }
+
+  covers(other) {
+    if (!(other instanceof Point)) return false;
+    return (
+      isInRange(other.x, [this.endA.x, this.endC.x]) &&
+      isInRange(other.y, [this.endA.y, this.endC.y])
+    );
   }
 
   get getDiagonalPair() {

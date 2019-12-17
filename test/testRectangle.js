@@ -55,4 +55,31 @@ describe("rectangle", () => {
       assert.isFalse(rectangle.hasPoint(point));
     });
   });
+  describe("covers", () => {
+    it("should give true if point is inside the rectangle", () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 4, y: 4 });
+      const point = new Point(2, 2);
+      assert.isTrue(rectangle.covers(point));
+    });
+    it("should give true if point is on the rectangle", () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 4, y: 4 });
+      const point = new Point(4, 4);
+      assert.isTrue(rectangle.covers(point));
+    });
+    it("should give false if point is outside the rectangle", () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 4, y: 4 });
+      const point = new Point(5, 5);
+      assert.isFalse(rectangle.covers(point));
+    });
+    it("should give false if other is not an instance of point ", () => {
+      const rectangle = new Rectangle({ x: 1, y: 5 }, { x: 4, y: 4 });
+      const other = {};
+      assert.isFalse(rectangle.covers(other));
+    });
+    it("should give false if other is not an instance of point but has required fields ", () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 4, y: 4 });
+      const other = { x: 2, y: 2 };
+      assert.isFalse(rectangle.covers(other));
+    });
+  });
 });
