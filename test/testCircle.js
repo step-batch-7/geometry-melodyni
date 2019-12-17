@@ -70,5 +70,10 @@ describe("circle", () => {
       const circleB = new Circle(centre, 10);
       assert.deepStrictEqual(circleA.moveTo(centre), circleB);
     });
+    it("should give null if given value for centre is not an instance of point", () => {
+      const centre = "";
+      const circleA = new Circle({ x: 5, y: 5 }, 10);
+      assert.isNull(circleA.moveTo(centre));
+    });
   });
 });

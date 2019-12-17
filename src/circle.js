@@ -22,8 +22,9 @@ class Circle {
     );
   }
 
-  moveTo(centre) {
-    return new Circle(centre, this.radius);
+  moveTo(other) {
+    if (!(other instanceof Point)) return null;
+    return new Circle(other, this.radius);
   }
 
   get area() {
