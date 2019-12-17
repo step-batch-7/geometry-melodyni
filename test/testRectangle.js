@@ -21,4 +21,14 @@ describe("rectangle", () => {
       assert.strictEqual(rectangle.area, 0);
     });
   });
+  describe("perimeter", () => {
+    it("should calculate area of given rectangle", () => {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 4 });
+      assert.strictEqual(rectangle.perimeter, 14);
+    });
+    it("should give 0 as perimeter of given rectangle with equal 4 points", () => {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 0, y: 0 });
+      assert.strictEqual(rectangle.perimeter, 0);
+    });
+  });
 });
