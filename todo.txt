@@ -3,7 +3,7 @@
 
 ---done--- r.area // gives the area of rectangle
 ---done--- r.perimeter // gives the perimeter of the rectangle
-* extract logic to find length width into function
+---done--- extract logic to find length width into function
 
 
 

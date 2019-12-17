@@ -15,16 +15,19 @@ class Rectangle {
   toString() {
     return `[Rectangle (${this.pointA.x},${this.pointA.y}) to (${this.pointC.x},${this.pointC.y})]`;
   }
+  get length() {
+    return this.pointA.findDistanceTo(this.#pointB);
+  }
+
+  get width() {
+    return this.pointA.findDistanceTo(this.#pointD);
+  }
 
   get area() {
-    const length = this.pointA.findDistanceTo(this.#pointB);
-    const width = this.pointA.findDistanceTo(this.#pointD);
-    return length * width;
+    return this.length * this.width;
   }
   get perimeter() {
-    const length = this.pointA.findDistanceTo(this.#pointB);
-    const width = this.pointA.findDistanceTo(this.#pointD);
-    return 2 * (length + width);
+    return 2 * (this.length + this.width);
   }
 }
 
