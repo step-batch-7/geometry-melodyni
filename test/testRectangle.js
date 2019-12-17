@@ -31,4 +31,28 @@ describe("rectangle", () => {
       assert.strictEqual(rectangle.perimeter, 0);
     });
   });
+  describe("hasPoint", () => {
+    it("should give true if given point is on the given rectangle", () => {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 4, y: 4 });
+      const point = new Point(4, 0);
+      assert.isTrue(rectangle.hasPoint(point));
+    });
+    it("should give false if given point is not on the given line", () => {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 4, y: 4 });
+      const point = new Point(-1, -1);
+      assert.isFalse(rectangle.hasPoint(point));
+    });
+
+    it("should give false if given value is not an instance of point but has x y fields", () => {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 4, y: 4 });
+      const point = { x: 0, y: 4 };
+      assert.isFalse(rectangle.hasPoint(point));
+    });
+
+    it("should give false if given value is not an instance and doesn't have x y fields", () => {
+      const rectangle = new Rectangle({ x: 2, y: 2 }, { x: 4, y: 4 });
+      const point = [];
+      assert.isFalse(rectangle.hasPoint(point));
+    });
+  });
 });

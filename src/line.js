@@ -21,10 +21,7 @@ class Line {
 
   isEqualTo(other) {
     if (!(other instanceof Line)) return false;
-    return (
-      (this.endA.isEqualTo(other.endA) && this.endB.isEqualTo(other.endB)) ||
-      (this.endA.isEqualTo(other.endB) && this.endB.isEqualTo(other.endA))
-    );
+    return this.endA.isEqualTo(other.endA) && this.endB.isEqualTo(other.endB);
   }
 
   hasPoint(other) {

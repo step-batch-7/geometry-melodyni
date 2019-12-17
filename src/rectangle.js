@@ -15,6 +15,16 @@ class Rectangle {
   toString() {
     return `[Rectangle (${this.pointA.x},${this.pointA.y}) to (${this.pointC.x},${this.pointC.y})]`;
   }
+  hasPoint(other) {
+    if (!(other instanceof Point)) return false;
+    const AB = new Line(this.pointA, this.#pointB);
+    const BC = new Line(this.#pointB, this.pointC);
+    const CD = new Line(this.pointC, this.#pointD);
+    const AD = new Line(this.pointA, this.#pointD);
+    return [AB, BC, CD, AD].some(line => other.isOn(line));
+    // return other.isOn(AB) || other.isOn(BC) || other.isOn(CD) || other.isOn(AD);
+  }
+
   get length() {
     return this.pointA.findDistanceTo(this.#pointB);
   }
