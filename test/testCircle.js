@@ -28,6 +28,16 @@ describe("circle", () => {
       const circleB = new Circle({ x: 1, y: 1 }, 5);
       assert.isFalse(circleA.isEqualTo(circleB));
     });
+    it("should give false if other is not a circle", () => {
+      const circleA = new Circle({ x: 0, y: 0 }, 5);
+      const other = [];
+      assert.isFalse(circleA.isEqualTo(other));
+    });
+    it("should give false if other is not a circle but has required fields", () => {
+      const circleA = new Circle({ x: 0, y: 0 }, 5);
+      const other = { centre: { x: 0, y: 0 }, radius: 5 };
+      assert.isFalse(circleA.isEqualTo(other));
+    });
   });
   describe("area", () => {
     it("should calculate the area of circle", () => {
