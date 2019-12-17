@@ -63,4 +63,12 @@ describe("circle", () => {
       assert.isFalse(circle.hasPoint(point));
     });
   });
+  describe("moveTo", () => {
+    it("should create a new Circle with same radius but on new given center", () => {
+      const centre = new Point({ x: 0, y: 0 });
+      const circleA = new Circle({ x: 5, y: 5 }, 10);
+      const circleB = new Circle(centre, 10);
+      assert.deepStrictEqual(circleA.moveTo(centre), circleB);
+    });
+  });
 });

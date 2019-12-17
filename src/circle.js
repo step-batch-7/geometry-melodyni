@@ -22,6 +22,10 @@ class Circle {
     );
   }
 
+  moveTo(centre) {
+    return new Circle(centre, this.radius);
+  }
+
   get area() {
     return 3.1415 * this.radius * this.radius;
   }
