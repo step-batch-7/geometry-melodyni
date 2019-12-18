@@ -75,10 +75,16 @@ describe("circle", () => {
   });
   describe("moveTo", () => {
     it("should create a new Circle with same radius but on new given center", () => {
-      const centre = new Point({ x: 0, y: 0 });
+      const centre = new Point(0, 0);
       const circleA = new Circle({ x: 5, y: 5 }, 10);
-      const circleB = new Circle(centre, 10);
-      assert.deepStrictEqual(circleA.moveTo(centre), circleB);
+      const circleB = circleA.moveTo(centre);
+      assert.isFalse(circleA.isEqualTo(circleB));
+    });
+    it("should create a new Circle with same radius but on same given center", () => {
+      const centre = new Point(5, 5);
+      const circleA = new Circle({ x: 5, y: 5 }, 10);
+      const circleB = circleA.moveTo(centre);
+      assert.isTrue(circleA.isEqualTo(circleB));
     });
     it("should give null if given value for centre is not an instance of point", () => {
       const centre = "";
