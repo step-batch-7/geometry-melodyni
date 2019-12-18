@@ -8,7 +8,11 @@ const isInRange = function(number, range) {
   return lowerLimit <= number && number <= higherLimit;
 };
 
-// const calcLengthAndWidth = function() {};
+const calcLengthAndWidth = function(endA, endC) {
+  const length = Math.abs(endC.x - endA.x);
+  const width = Math.abs(endC.y - endA.y);
+  return [length, width];
+};
 
 class Rectangle {
   constructor(endA, endC) {
@@ -28,12 +32,11 @@ class Rectangle {
 
   hasPoint(other) {
     if (!(other instanceof Point)) return false;
-    const { endB, endD } = this.getDiagonalPair;
-    const AB = new Line(this.endA, endB);
-    const BC = new Line(endB, this.endC);
-    const CD = new Line(this.endC, endD);
-    const AD = new Line(endD, this.endA);
-    return [AB, BC, CD, AD].some(line => other.isOn(line));
+    const areXEqual = this.endA.x === other.x || this.endC.x === other.x;
+    const areYEqual = this.endA.y === other.y || this.endC.y === other.y;
+    const areXinRange = isInRange(other.x, [this.endA.x, this.endC.x]);
+    const areYinRange = isInRange(other.y, [this.endA.y, this.endC.y]);
+    return (areXEqual && areYinRange) || (areYEqual && areXinRange);
   }
 
   covers(other) {
@@ -44,25 +47,13 @@ class Rectangle {
     );
   }
 
-  get getDiagonalPair() {
-    const endB = new Point(this.endC.x, this.endA.y);
-    const endD = new Point(this.endA.x, this.endC.y);
-    return { endB, endD };
-  }
-
-  get length() {
-    return this.endA.findDistanceTo(this.getDiagonalPair.endB);
-  }
-
-  get width() {
-    return this.endA.findDistanceTo(this.getDiagonalPair.endD);
-  }
-
   get area() {
-    return this.length * this.width;
+    const [length, width] = calcLengthAndWidth(this.endA, this.endC);
+    return length * width;
   }
   get perimeter() {
-    return 2 * (this.length + this.width);
+    const [length, width] = calcLengthAndWidth(this.endA, this.endC);
+    return 2 * (length + width);
   }
 }
 
