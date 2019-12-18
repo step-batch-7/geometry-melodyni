@@ -4,16 +4,12 @@
 ---done--- r.area // gives the area of rectangle
 ---done--- r.perimeter // gives the perimeter of the rectangle
 ---done--- extract logic to find length width into function
-
-
-
-
-r.hasPoint(p) // is true if point in on the rectangle r
-r.covers(p) // is true if point p is inside rectangle r
-//Rectangles have their edges parallel to x or y axis
-r = new Rectangle({x:1,y:1},{x:5,y:4})// creates a rectangle given the coordinates of its diagonal
-r.toString() // "[Rectangle (1,1) to (2,3)]"
-r1.isEqualTo(r2) //is true if both rectangles are on same coordinates
+---done--- r.hasPoint(p) // is true if point in on the rectangle r
+---done--- r.covers(p) // is true if point p is inside rectangle r
+---done--- //Rectangles have their edges parallel to x or y axis
+---done--- r = new Rectangle({x:1,y:1},{x:5,y:4})// creates a rectangle given the coordinates of its diagonal
+---done--- r.toString() // "[Rectangle (1,1) to (2,3)]"
+---done--- r1.isEqualTo(r2) //is true if both rectangles are on same coordinates
 
 ---done--- c.covers(p) // is true if point p is inside circle c
 ---done--- c.moveTo({x:1,y:1}) // creates a new circle of same dimensions at 1,

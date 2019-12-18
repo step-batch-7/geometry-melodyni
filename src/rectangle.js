@@ -8,6 +8,8 @@ const isInRange = function(number, range) {
   return lowerLimit <= number && number <= higherLimit;
 };
 
+// const calcLengthAndWidth = function() {};
+
 class Rectangle {
   constructor(endA, endC) {
     this.endA = new Point(endA.x, endA.y);
@@ -20,14 +22,8 @@ class Rectangle {
   isEqualTo(other) {
     if (!(other instanceof Rectangle)) return false;
     const diagonalA = new Line(this.endA, this.endC);
-    const diagonalB = new Line(
-      this.getDiagonalPair.endB,
-      this.getDiagonalPair.endD
-    );
     const otherDiagonal = new Line(other.endA, other.endC);
-    return [diagonalA, diagonalB].some(diagonal =>
-      otherDiagonal.isEqualTo(diagonal)
-    );
+    return otherDiagonal.isEqualTo(diagonalA);
   }
 
   hasPoint(other) {
