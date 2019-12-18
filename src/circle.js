@@ -20,7 +20,6 @@ class Circle {
 
   moveTo(other) {
     if (!(other instanceof Point)) return null;
-    console.log("-->", other);
     return new Circle(other, this.radius);
   }
 
